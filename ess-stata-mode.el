@@ -32,23 +32,6 @@
 
 ;;; Code:
 
-;; ;;;;;;;;;;;;;;;
-;; ;; ado-mode
-;; ;;; required files
-;; (require 'font-lock)
-;; ;; (require 'ado-cus)
-;; (require 'ado-font)
-;; ;; (require 'ado-clip)
-;; ;; (require 'ado-to-stata)
-;; (require 'ado-font-lock) ;; all the font-lock definitions
-;; ;; (require 'ado-stata-info) ;; gathering info from Stata
-
-;; (defvar ado-font-lock-keywords nil)
-;; (defvar ado-font-lock-syntactic-keywords nil)
-
-;; ;; end of from ado-mode
-
-
 (require 'ess-mode)
 (require 'ess-stata-lang)
 
@@ -62,14 +45,9 @@
     (modify-syntax-entry ?` "(\'" tbl)
     (modify-syntax-entry ?\' ")`" tbl)
     (modify-syntax-entry ?/  ". 124b" tbl)
-    ;;    (modify-syntax-entry ?/  ". 124" tbl)
-    ;; asterisk at bol (beginning of line, Nobu guesses) comments taken care of by
-    ;; `syntax-propertize-function'.
+    ;; asterisk at bol (beginning of line) comments taken care of by
+    ;; `syntax-propertize-function' below.
     (modify-syntax-entry ?*  ". 23b"   tbl)
-    ;;    (modify-syntax-entry ?*  "<. 23b"   tbl)
-    ;;    (modify-syntax-entry ?* ". 23n" tbl)
-    ;; Nobu is checking whether * comment font-lock can be fixed or not
-    ;;    (modify-syntax-entry ?\n "> b"  tbl)
     (modify-syntax-entry ?\n "> "  tbl)
     (modify-syntax-entry ?+ "." tbl)
     (modify-syntax-entry ?- "." tbl)
@@ -133,18 +111,6 @@
   (setq-local paragraph-separate (concat  "[ \t\f]*$\\|" page-delimiter))
   (setq-local paragraph-start (concat "[ \t\f]*$\\|" page-delimiter))
   (setq font-lock-defaults '(ess-STA-mode-font-lock-defaults nil nil ((?\. . "w"))))
-;;   ;; ado-mode
-;;   ;; This will make ado-mode load when you open an ado or do file."
-;;   ;; standard variables for any mode
-;;   ;; (interactive)
-;;   (make-local-variable 'ado-fontify-new-flag)
-;; ;;  (make-local-variable 'font-lock-defaults)
-;;   (ado-set-font-lock-keywords)
-;;   (setq font-lock-defaults '(ado-font-lock-keywords))
-;;   (make-local-variable 'font-lock-syntactic-keywords)
-;;                                         ; (ado-set-font-lock-syntactic-keywords)
-;;   ;; end of ado
-
   )
 
 (defalias 'STA-mode 'ess-stata-mode)
@@ -210,12 +176,6 @@ This function is placed in `ess-presend-filter-functions'."
   (setq comint-prompt-regexp (concat "^" inferior-ess-prompt))
   (setq-local comint-use-prompt-regexp t)
 (setq font-lock-defaults '(ess-STA-mode-font-lock-defaults nil nil ((?\. . "w"))))
-;;   ;; the following 5 lines are testing whether they will give me color
-;;   (make-local-variable 'ado-fontify-new-flag)
-;; ;;  (make-local-variable 'font-lock-defaults)
-;;   (ado-set-font-lock-keywords)
-;;   (setq font-lock-defaults '(ado-font-lock-keywords))
-;;   (make-local-variable 'font-lock-syntactic-keywords)
   )
 
 
@@ -235,17 +195,6 @@ This function is placed in `ess-presend-filter-functions'."
   (setq-local paragraph-separate (concat  "[ \t\f]*$\\|" page-delimiter))
   (setq-local paragraph-start (concat "[ \t\f]*$\\|" page-delimiter))
   (setq font-lock-defaults '(ess-STA-mode-font-lock-defaults nil nil ((?\. . "w"))))
-  ;; ;; ado-mode
-  ;; ;; This will make ado-mode load when you open an ado or do file."
-  ;; ;; standard variables for any mode
-  ;; ;; (interactive)
-  ;; (make-local-variable 'ado-fontify-new-flag)
-  ;; ;;  (make-local-variable 'font-lock-defaults)
-  ;; (ado-set-font-lock-keywords)
-  ;; (setq font-lock-defaults '(ado-font-lock-keywords))
-  ;; (make-local-variable 'font-lock-syntactic-keywords)
-  ;;                                       ; (ado-set-font-lock-syntactic-keywords)
-  ;; ;; end of ado
   )
 
 (defalias 'STA-transcript-mode 'ess-stata-mode-syntax-table)
