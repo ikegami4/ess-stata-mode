@@ -1,2 +1,2 @@
 the main difference between this forked one and the original one is 
-- use ado-mode's ado-font.el and ado-font-lock.el so that font lock would work properly
+- use [[https://github.com/louabill/ado-mode][ado-mode]]'s ado-font.el and ado-font-lock.el so that font lock would work properly
