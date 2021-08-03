@@ -58,9 +58,8 @@
     (modify-syntax-entry ?\$ "." tbl)
     (modify-syntax-entry ?` "(\'" tbl)
     (modify-syntax-entry ?\' ")`" tbl)
-    ;; (modify-syntax-entry ?/  ". 124b" tbl)
     (modify-syntax-entry ?/  ". 124" tbl)
-    ;; check if the previous line treats // as comment properly
+    ;; removed b so that the previous line would treat // as comment properly
     ;; asterisk at bol (beginning of line) comments taken care of by
     ;; `syntax-propertize-function' below.
     (modify-syntax-entry ?*  ". 23b"   tbl)
