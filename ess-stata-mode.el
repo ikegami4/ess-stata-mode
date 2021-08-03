@@ -32,6 +32,20 @@
 
 ;;; Code:
 
+;;;;;;;;;;;;;;;
+;; ado-mode
+;;; required files
+(require 'font-lock)
+;; (require 'ado-cus)
+(require 'ado-font)
+;;()require 'adoTemp-font)
+;; (require 'ess-font-lock)
+;; (require 'ado-clip)
+;; (require 'ado-to-stata)
+(require 'ado-font-lock) ;; all the font-lock definitions
+;; (require 'adoTemp-font-lock) ;; all the font-lock definitions
+;; (require 'ado-stata-info) ;; gathering info from Stata
+
 (require 'ess-mode)
 (require 'ess-stata-lang)
 
@@ -44,7 +58,9 @@
     (modify-syntax-entry ?\$ "." tbl)
     (modify-syntax-entry ?` "(\'" tbl)
     (modify-syntax-entry ?\' ")`" tbl)
-    (modify-syntax-entry ?/  ". 124b" tbl)
+    ;; (modify-syntax-entry ?/  ". 124b" tbl)
+    (modify-syntax-entry ?/  ". 124" tbl)
+    ;; check if the previous line treats // as comment properly
     ;; asterisk at bol (beginning of line) comments taken care of by
     ;; `syntax-propertize-function' below.
     (modify-syntax-entry ?*  ". 23b"   tbl)
